@@ -1,0 +1,25 @@
+{
+  "name": "NeurixStack",
+  "version": "0.0.1",
+  "main": "main.js",
+  "description": "NeurixStack for developing cross platform desktop apps having configurable ui",
+  "scripts": {
+    "postinstall": "cd ngapp && npm install",
+    "package": "npm install && npm run build && npm run electron:package && npm run relocate",
+    "electron:package": "electron-packager . dist-NeurixStack --overwrite --asar",
+    "start": "electron .",
+    "relocate": "mv dist-* ../../../target/",
+    "start:electron": "npm run build && npm start",
+    "start:web": "cd ngapp && npm start",
+    "watch": "nodemon --watch * --exec electron .",
+    "rebuild": "electron-rebuild",
+    "build": "cd ngapp && npm run build:prod"
+  },
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^13.1.0",
+    "electron-packager": "^15.2.0",
+    "electron-rebuild": "^2.3.5"
+  }
+}
